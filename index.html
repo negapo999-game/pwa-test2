@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>勉強アプリ</title>
+
+  <!-- PWA設定 -->
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 勉強アプリ</h1>
+  <p>今日の勉強回数</p>
+  <h2 id="count">0</h2>
+
+  <button onclick="study()">勉強した！</button>
+
+  <script>
+    // 保存されている回数を読み込み
+    let count = localStorage.getItem("studyCount") || 0;
+    document.getElementById("count").textContent = count;
+
+    function study() {
+      count++;
+      localStorage.setItem("studyCount", count);
+      document.getElementById("count").textContent = count;
+    }
+
+    // // Service Worker登録（PWA）
+    // if ("serviceWorker" in navigator) {
+    //   navigator.serviceWorker.register("sw.js");
+    // }
+  </script>
+
+</body>
+</html>
